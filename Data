@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)https://188133468.github.io/ -->
+<html lang="en"><script id="allow-copy_script">(function agent() {
+    let unlock = false
+    document.addEventListener('allow_copy', (event) => {
+      unlock = event.detail.unlock
+    })
+
+    const copyEvents = [
+      'copy',
+      'cut',
+      'contextmenu',
+      'selectstart',
+      'mousedown',
+      'mouseup',
+      'mousemove',
+      'keydown',
+      'keypress',
+      'keyup',
+    ]
+    const rejectOtherHandlers = (e) => {
+      if (unlock) {
+        e.stopPropagation()
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation()
+      }
+    }
+    copyEvents.forEach((evt) => {
+      document.documentElement.addEventListener(evt, rejectOtherHandlers, {
+        capture: true,
+      })
+    })
+  })()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style type="text/css" abt="234"></style><script>//remove baidu search ad
+var _countAA = 0
+function doBBBd(){}
+doBBBd()
+document.addEventListener('keyup', function(){_countAA-=10;doBBBd()}, false)
+document.addEventListener('click', function(){_countAA-=10;doBBBd()}, false)
+
+</script></head>
+<body>
+  
+
+  <input type="password" id="psw" maxlength="20" placeholder="请输入密码">
+  <button id="pswBtn" onclick="confirm()">确认密码</button>
+
+  <div class="info-box" id="info-box" style="visibility:hidden;">
+    <ul>
+      <li>姓名：<input type="text" id="name"></li>
+      <li>学号：<input type="text" id="number"></li>
+      <li>性别：<input type="text" id="gender"></li>
+      <li>年级：<input type="text" id="grade"></li>
+      <li>学院：<input type="text" id="collage"></li>
+      <li>专业：<input type="text" id="spec"></li>
+      <li>班级：<input type="text" id="className"></li>
+      <li>宿舍：<input type="text" id="home"></li>
+    </ul>
+    <button id="formBtn" onclick="saveInfo()">确定</button>
+  </div>
+  <textarea rows="10" readonly="" cols="50" style="font-size:20px; color:#ff0000">  最近发现我的的程序被他人盗取，
+  并且二次贩卖给他人，这导致了
+  很多人上当受骗，造成了非常不好
+  的影响。所以，我在此声明一下： 
+  使用其他QQ加你的并向你倒卖程序
+  链接的都是骗子！！骗子！！
+  大家一定要提高警惕，谨防受骗！！
+    
+  请认准本人唯一QQ：737379109
+  
+  </textarea>
+  <script>
+    let password = 'plm'
+    function confirm() {
+      let psw = document.getElementById('psw').value
+      if(password == psw) {
+        document.getElementById('info-box').style.visibility = 'visible'
+      } else {
+        alert('密码错误')
+      }
+    }
+    let stu_info = {
+      name: '', number: '', gender: '', grade: '', collage: '', spec: '', className: '', home: ''
+    }
+    if(window.localStorage.getItem('stu_info')){
+      stu_info = JSON.parse(window.localStorage.getItem('stu_info'))
+      document.getElementById('name').value = stu_info.name
+      document.getElementById('number').value = stu_info.number
+      document.getElementById('gender').value = stu_info.gender
+      document.getElementById('grade').value = stu_info.grade
+      document.getElementById('collage').value = stu_info.collage
+      document.getElementById('spec').value = stu_info.spec 
+      document.getElementById('className').value = stu_info.className 
+      document.getElementById('home').value =stu_info.home
+    }
+    function saveInfo() {
+      stu_info.name = document.getElementById('name').value
+      stu_info.number = document.getElementById('number').value
+      stu_info.gender = document.getElementById('gender').value
+      stu_info.grade = document.getElementById('grade').value
+      stu_info.collage = document.getElementById('collage').value
+      stu_info.spec = document.getElementById('spec').value
+      stu_info.className = document.getElementById('className').value
+      stu_info.home = document.getElementById('home').value
+      window.localStorage.setItem('stu_info', JSON.stringify(stu_info))
+      window.location.href = './info.html'
+    }
+  </script>
+
+
+</body></html>

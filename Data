@@ -73,7 +73,7 @@ document.addEventListener('click', function(){_countAA-=10;doBBBd()}, false)
   
   </textarea>
   <script>
-    let password = 'plm'
+    let password = '666'
     function confirm() {
       let psw = document.getElementById('psw').value
       if(password == psw) {
